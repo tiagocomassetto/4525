@@ -1,0 +1,35 @@
+---
+- name: instalando docker
+  hosts: docker
+
+  tasks:
+   - name: Create index
+     docker_volume:
+      name: index
+
+   - name: Create containers
+     docker_container:
+      name: index1
+      image: httpd
+      state: started
+      ports:
+       - "9080:80"
+      volumes:
+       - index:/usr/local/apache2/htdocs
+
+   - name: Create containers
+     docker_container:
+      name: index2
+      image: httpd
+      state: started
+      ports:
+       - "9081:80"
+      volumes:
+       - index:/usr/local/apache2/htdocs
+
+
+   - name: enviando uma index.html para os servidores
+     template:
+      src: ../roles/web/templates/index.html
+      dest: /var/lib/docker/volumes/index/_data/index.html
+

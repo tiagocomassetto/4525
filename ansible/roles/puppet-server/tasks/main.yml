@@ -1,0 +1,8 @@
+---
+# tasks file for puppet-server
+
+- name: instalando puppet server
+  package:
+   name: puppetserver
+   update_cache: yes
+   state: present 

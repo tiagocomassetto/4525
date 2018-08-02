@@ -1,0 +1,14 @@
+---
+
+- name: instalando somente no debian
+  hosts: all
+  tasks:
+   - name: instalando pacotes
+     apt:
+      name: "{{ item }}"
+     with_items:
+      - vim
+      - sl
+      - nano
+      - dnsutils
+     when: ansible_os_family == "Debian"

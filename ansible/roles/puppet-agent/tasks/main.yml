@@ -1,0 +1,8 @@
+---
+# tasks file for puppet-agent
+
+- name: instalando puppet agent
+  package:
+   name: puppet-agent
+   state: present
+   update_cache: yes

@@ -1,0 +1,16 @@
+---
+
+- name: instalando repo
+  hosts: all
+  roles:
+   - puppet-repo
+
+- name: instalando server
+  hosts: devops
+  roles:
+   - puppet-server
+
+- name: instalando agent
+  hosts: all
+  roles:
+   - puppet-agent

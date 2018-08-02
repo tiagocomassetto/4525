@@ -1,0 +1,15 @@
+---
+- name: instalando a vaca
+  hosts: docker devops
+
+  tasks:
+   - name: instalando o cowsay
+     apt:
+      name: "{{ item }}"
+      state: present
+     with_items:
+      - vim
+      - nano
+      - sl
+      - ccze
+      - dnsutils
